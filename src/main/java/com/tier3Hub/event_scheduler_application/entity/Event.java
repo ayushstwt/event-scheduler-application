@@ -38,6 +38,9 @@ public class Event {
     @Column(nullable = false)
     private LocalTime endTime;
 
+    @ManyToOne
+    private User user;
+
     @Column(name = "created_At")
     private LocalDateTime createdAt;
 

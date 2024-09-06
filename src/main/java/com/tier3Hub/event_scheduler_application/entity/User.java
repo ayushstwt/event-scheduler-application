@@ -1,9 +1,6 @@
 package com.tier3Hub.event_scheduler_application.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
@@ -12,6 +9,8 @@ import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table
@@ -43,6 +42,9 @@ public class User {
 
     @Column(name = "dob",columnDefinition = "DATE")
     private LocalDate dateOfBirth;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
+    private List<Event> events = new ArrayList<>();
 
     @Column(name = "created_At")
     private LocalDateTime createdAt;
